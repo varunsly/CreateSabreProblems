@@ -105,7 +105,7 @@ if(royal(Player)) 1 else 0
 
 # Obtaining Crown
 if(inv(Crown) == Player) 1 else 0
-
+```
 ### Character-Specific Utilities
 
 | Character | Goal Description | Implementation |
@@ -139,3 +139,24 @@ java -jar sabre.jar -v -p action-castle.txt -h h+ -el 1
 -atl NUMBER  # Set maximum actions in plan
 -ctl NUMBER  # Set maximum actions in character explanations
 -tl NUMBER   # Set time limit in milliseconds
+```
+markdownCopy## Implementation Notes
+
+### State Tracking
+* Uses boolean properties for state management
+* Implements bidirectional path connections through triggers 
+* Handles inventory transfers and item states
+* Tracks character emotions and relationships
+
+### Planning Considerations
+* Actions have clear preconditions and effects
+* State changes affect multiple properties simultaneously 
+* Character goals can conflict with each other
+* Solutions require multi-step planning
+
+## Credits
+* Based on [Parsely Action Castle](http://memento-mori.com/pdf/parsely-preview-n-play-edition)
+* Implemented using [Sabre Narrative Planner](https://github.com/sgware/sabre) by Stephen G. Ware
+
+## License
+This project is open source and available under the [MIT License](LICENSE).
