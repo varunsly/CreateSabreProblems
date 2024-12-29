@@ -105,3 +105,37 @@ if(royal(Player)) 1 else 0
 
 # Obtaining Crown
 if(inv(Crown) == Player) 1 else 0
+
+### Character-Specific Utilities
+
+| Character | Goal Description | Implementation |
+|-----------|-----------------|----------------|
+| Ghost | Seeks peace and crown inheritance | ```incapacitated(Ghost) & exists(c : character) inv(Crown) == c``` |
+| Guard | Protects castle and key | ```!incapacitated(Guard) & inv(Key) == Guard & emotion(Guard) == Suspicious``` |
+| Princess | Desires marriage and crowned spouse | ```married(Princess) & emotion(Princess) == Happy & exists(c : character) (married(c) & crowned(c))``` |
+| Troll | Wants to be fed | ```!hungry(Troll)``` |
+| Player | Complete victory conditions | ```royal(Player) & crowned(Player) & married(Player) & location(Player) == ThroneRoom``` |
+
+## Setup and Running
+
+### Prerequisites
+
+* Java Runtime Environment (JRE) 8 or higher
+* Sabre Narrative Planner v0.7
+
+### Installation
+
+1. Clone this repository
+2. Download Sabre planner jar file
+3. Place problem definition in `action-castle.txt`
+
+### Running the Planner
+
+```bash
+# Basic run with visualization and epistemic limit of 1
+java -jar sabre.jar -v -p action-castle.txt -h h+ -el 1
+
+# Additional flags for customization
+-atl NUMBER  # Set maximum actions in plan
+-ctl NUMBER  # Set maximum actions in character explanations
+-tl NUMBER   # Set time limit in milliseconds
